@@ -6,7 +6,7 @@ import time
 def get_random_domain():
     response = requests.get("https://api.mail.tm/domains")
     data = response.json()
-    return data["hydra:member"][0]["domain"]  # Just use the first domain
+    return data["hydra:member"][0]["domain"]
 
 def generate_random_string(length=10):
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
@@ -115,7 +115,7 @@ def main():
         print(f"Token: {token}")
         messages = wait_for_messages(token, timeout=60, interval=5)
         if messages:
-            read_message(token, messages[0]['id'])  # Read the first message
+            read_message(token, messages[0]['id'])
 
     else:
             print("No messages found or failed to retrieve messages.")
